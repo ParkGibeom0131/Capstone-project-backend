@@ -1,0 +1,51 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model RegExp {
+  id       Int      @id @default(autoincrement())
+  RegExp   String
+  createAt DateTime @default(now())
+  updateAt DateTime @updatedAt
+}
+
+model Privacy {
+  id       Int      @id @default(autoincrement())
+  Privacy  String
+  createAt DateTime @default(now())
+  updateAt DateTime @updatedAt
+}
+
+model NonPrivacy {
+  id         Int      @id @default(autoincrement())
+  NonPrivacy String
+  createAt   DateTime @default(now())
+  updateAt   DateTime @updatedAt
+}
+
+model WebFilter {
+  id          Int      @id @default(autoincrement())
+  FstInstance String
+  SndInstance Int
+  TrdInstance Int
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model UploadInfo {
+  id       Int     @id @default(autoincrement())
+  DelMeta  Boolean
+  DelFull  Boolean
+  DelSel   Boolean
+  FiltPriv Boolean
+  FiltFull Boolean
+  FiltSel  Boolean
+}
